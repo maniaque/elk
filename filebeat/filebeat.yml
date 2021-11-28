@@ -13,12 +13,9 @@ setup.template:
 
 setup.ilm.enabled: false
 
-output.elasticsearch:
-  hosts: ["localhost:9200"]
-  index: "docker-%{+yyyy.MM.dd}"
-
-  username: "elastic"
-  password: "changeme"
+output.logstash:
+  hosts: ["127.0.0.1:5044"]
+  index: "docker"
 
 processors:
   - add_docker_metadata:
