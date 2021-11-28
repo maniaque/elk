@@ -1,0 +1,33 @@
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+
+filebeat.inputs:
+- type: container
+  paths:
+    - '/var/lib/docker/containers/*/*.log'
+
+setup.template:
+  name: "docker"
+  pattern: "docker-*"
+
+setup.ilm.enabled: false
+
+output.elasticsearch:
+  hosts: ["localhost:9200"]
+  index: "docker-%{+yyyy.MM.dd}"
+
+  username: "elastic"
+  password: "changeme"
+
+processors:
+  - add_host_metadata:
+      when.not.contains.tags: forwarded
+
+  - add_docker_metadata:
+      host: "unix:///var/run/docker.sock"
+
+  - decode_json_fields:
+      fields: ["message"]
+      target: "json"
+      overwrite_keys: true
