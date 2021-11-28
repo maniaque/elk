@@ -2,4 +2,9 @@
 cluster.name: "docker-cluster"
 network.host: 0.0.0.0
 discovery.type: single-node
+
+xpack:
+  license.self_generated.type: basic
+  security.enabled: true
+  monitoring.collection.enabled: true
 ...
