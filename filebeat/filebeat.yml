@@ -19,3 +19,7 @@ output.elasticsearch:
 
   username: "elastic"
   password: "changeme"
+
+processors:
+  - add_docker_metadata:
+      host: "unix:///var/run/docker.sock"
