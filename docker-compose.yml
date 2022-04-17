@@ -1,6 +1,6 @@
 services:
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.15.2
+    image: maniaque/elasticsearch:7.15.2
     volumes:
       - ./es.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - ./data:/usr/share/elasticsearch/data:rw
@@ -13,7 +13,7 @@ services:
       - elk
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.15.2
+    image: maniaque/kibana:7.15.2
     volumes:
       - ./kibana.yml:/usr/share/kibana/config/kibana.yml:ro
     ports:
@@ -26,4 +26,3 @@ services:
 networks:
   elk:
     driver: bridge
-
