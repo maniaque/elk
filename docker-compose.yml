@@ -1,6 +1,6 @@
 services:
   elasticsearch:
-    image: maniaqu/elasticsearch:7.15.2
+    image: maniaque/elasticsearch:7.15.2
     volumes:
       - ./es.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - ./data:/usr/share/elasticsearch/data:rw
